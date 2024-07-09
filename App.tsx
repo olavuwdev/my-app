@@ -24,21 +24,31 @@ const handleLongPress = () => {
 
 const App = () => {
   const [name, setName] = useState('Ninguem');
+  const [lastName, setLastName] = useState('Silva');
+  const [showOptions, setShowOptions] = useState(true);
   
   const alterarNome = () => {
-    setName('Olavo')
+    setName('Olavo');
+    setLastName('Adriel');
   }  
   const alterarNome2 = () => {
-    setName('Adriel')
+    setName('Kleber');
+    setLastName('Weber');
+    console.log("Teste")
+  }
+
+  const handleOptionButtons = () => {
+    setShowOptions(!showOptions)
   }
   return (
     <SafeAreaView style={{ paddingTop: 27  }}>
-      <Text style={styles.title}>Pizzaria 10</Text>
-      <Text style={styles.subtitles}>Lista de pizzas 10</Text>
+      <Text style={styles.title}>Meu primeiro App</Text>
 
-      <Text style={{textAlign: 'center', margin:10, fontWeight: 'bold', fontSize:28}}> Meu nome é: {name}</Text>
 
-      <Button
+      <Text style={{textAlign: 'center', margin:10, fontWeight: 'bold', fontSize:28}}> Meu nome é: {name} {lastName}</Text>
+        {showOptions &&
+      <View style={styles.box}>
+      <Button 
       title="Mudar nome para Olavo"
       onPress={alterarNome}
       />
@@ -48,6 +58,12 @@ const App = () => {
       onPress={alterarNome2}
       
       /> 
+      </View>
+        }
+  
+      <Button 
+      title={ showOptions ?'Ocultar Opções' : 'Mostrar Opções' }
+      onPress={handleOptionButtons}></Button>
 
     </SafeAreaView>
   );
@@ -73,6 +89,14 @@ const styles = StyleSheet.create({
   },
   buttonText:{
     textAlign: 'center',
-    fontSize:19
+    fontSize:19,
+    color: 'green'
+  },
+  box:{
+    borderColor: '#000000',
+    borderStyle: 'dotted',
+    borderWidth: 1.5,
+    margin:10,
+    padding:10
   }
 });
