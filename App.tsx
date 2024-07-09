@@ -39,34 +39,27 @@ const App = () => {
       </Pressable>
    */}
 
-      <Pressable onPressIn={handlePressIn}>
       <PizzaItem
         name='Calabresa'
         price={45}
         items={['Massa', 'Calabresa', 'Queijo', 'Milho']}
+        onPress={() => Alert.alert('Calabresa')}
       />
-      </Pressable>
 
-      <TouchableOpacity
-      onPress={handleButton}
-      activeOpacity={0.7}>
       <PizzaItem
         name='Frango'
         price={40}
         items={['Massa', 'Frango', 'Queijo', 'Milho']}
+        onPress={() => Alert.alert('Pizza de frango')}
         />
-      </TouchableOpacity>
-        <TouchableHighlight
-        onPress={handlePressOut}
-        underlayColor={'#000'}
-        >
         <PizzaItem
         name='Chocolate'
         price={35}
         items={['Massa', 'Chocolate', 'Leite']}
         originalPrice={80}
+        onPress={() => Alert.alert('Pizza de chocolate')}
       />
-      </TouchableHighlight>
+  
 
     </SafeAreaView>
   );

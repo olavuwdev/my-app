@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from "react-native"
+import { View, Text, StyleSheet, Pressable } from "react-native"
 
 
 //JavaScrip
@@ -8,11 +8,13 @@ type Propos = {
     price:number;
     originalPrice?:number;
     items?: string[];
+    onPress: () => void;
   }
 
 
-export const PizzaItem = ({name, price, originalPrice, items}: Propos) =>{
+export const PizzaItem = ({name, price, originalPrice, items, onPress}: Propos) =>{
     return (
+        <Pressable onPress={onPress}>
         <View style={styles.container}>
             <Text style={[styles.name, styles.negrito]}>{name}</Text>
             <Text style={styles.price}>{`R$ ${price.toFixed(2)}`}</Text>
@@ -21,6 +23,7 @@ export const PizzaItem = ({name, price, originalPrice, items}: Propos) =>{
             }
             <Text>{items?.join(', ')}</Text>
         </View>
+        </Pressable>
     );
 }
 
