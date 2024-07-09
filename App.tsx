@@ -2,6 +2,7 @@ import { TouchableOpacity, Alert, View, Button, TouchableHighlight, Text, SafeAr
 // import { SafeAreaView } from 'react-native-safe-area-context';
 import Constants from 'expo-constants';
 import { PizzaItem } from './componentes/PizzaItem';
+import { useState } from 'react';
 
 const handleButton = () => {
   Alert.alert("Você apertou!")
@@ -20,46 +21,33 @@ const handleLongPress = () => {
   Alert.alert('Segurou o dedo')
 }
 
+
 const App = () => {
+  const [name, setName] = useState('Ninguem');
+  
+  const alterarNome = () => {
+    setName('Olavo')
+  }  
+  const alterarNome2 = () => {
+    setName('Adriel')
+  }
   return (
     <SafeAreaView style={{ paddingTop: 27  }}>
       <Text style={styles.title}>Pizzaria 10</Text>
       <Text style={styles.subtitles}>Lista de pizzas 10</Text>
 
-      {/*
-       <Button 
-      title="botao"
-      onPress={handleButton} /> 
-   
-        Componente Pressable - Mesma funcionade do botão
-      <Pressable onPress={handleButton}>
-        <View style={styles.button}>
-          <Text style={styles.buttonText}> Aperte aqui</Text>
-        </View>
-      </Pressable>
-   */}
+      <Text style={{textAlign: 'center', margin:10, fontWeight: 'bold', fontSize:28}}> Meu nome é: {name}</Text>
 
-      <PizzaItem
-        name='Calabresa'
-        price={45}
-        items={['Massa', 'Calabresa', 'Queijo', 'Milho']}
-        onPress={() => Alert.alert('Calabresa')}
+      <Button
+      title="Mudar nome para Olavo"
+      onPress={alterarNome}
       />
-
-      <PizzaItem
-        name='Frango'
-        price={40}
-        items={['Massa', 'Frango', 'Queijo', 'Milho']}
-        onPress={() => Alert.alert('Pizza de frango')}
-        />
-        <PizzaItem
-        name='Chocolate'
-        price={35}
-        items={['Massa', 'Chocolate', 'Leite']}
-        originalPrice={80}
-        onPress={() => Alert.alert('Pizza de chocolate')}
-      />
-  
+      
+      <Button
+      title="Mudar nome para Adriel"
+      onPress={alterarNome2}
+      
+      /> 
 
     </SafeAreaView>
   );
