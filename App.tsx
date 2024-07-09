@@ -1,20 +1,97 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { TouchableOpacity, Alert, View, Button, TouchableHighlight, Text, SafeAreaView, StyleSheet, Pressable } from 'react-native';
+// import { SafeAreaView } from 'react-native-safe-area-context';
+import Constants from 'expo-constants';
+import { PizzaItem } from './componentes/PizzaItem';
 
-export default function App() {
+const handleButton = () => {
+  Alert.alert("Você apertou!")
+}
+
+//Formas de Pressionamento
+
+const handlePressIn = () => {
+  Alert.alert('Apertou')
+};
+const handlePressOut = () => {
+  Alert.alert("Soltou o dedo!")
+}
+
+const handleLongPress = () => {
+  Alert.alert('Segurou o dedo')
+}
+
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={{ paddingTop: 27  }}>
+      <Text style={styles.title}>Pizzaria 10</Text>
+      <Text style={styles.subtitles}>Lista de pizzas 10</Text>
+
+      {/*
+       <Button 
+      title="botao"
+      onPress={handleButton} /> 
+   
+        Componente Pressable - Mesma funcionade do botão
+      <Pressable onPress={handleButton}>
+        <View style={styles.button}>
+          <Text style={styles.buttonText}> Aperte aqui</Text>
+        </View>
+      </Pressable>
+   */}
+
+      <Pressable onPressIn={handlePressIn}>
+      <PizzaItem
+        name='Calabresa'
+        price={45}
+        items={['Massa', 'Calabresa', 'Queijo', 'Milho']}
+      />
+      </Pressable>
+
+      <TouchableOpacity
+      onPress={handleButton}
+      activeOpacity={0.7}>
+      <PizzaItem
+        name='Frango'
+        price={40}
+        items={['Massa', 'Frango', 'Queijo', 'Milho']}
+        />
+      </TouchableOpacity>
+        <TouchableHighlight
+        onPress={handlePressOut}
+        underlayColor={'#000'}
+        >
+        <PizzaItem
+        name='Chocolate'
+        price={35}
+        items={['Massa', 'Chocolate', 'Leite']}
+        originalPrice={80}
+      />
+      </TouchableHighlight>
+
+    </SafeAreaView>
   );
 }
 
+export default App;
+
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  title: {
+    fontSize: 24,
+    textAlign: 'center',
+    color: 'red'
   },
+  subtitles: {
+    fontSize: 17,
+    color: '#CCC',
+    textAlign: 'center'
+  },
+  button:{
+    backgroundColor: 'gray',
+    margin:10
+    
+  },
+  buttonText:{
+    textAlign: 'center',
+    fontSize:19
+  }
 });
