@@ -6,7 +6,10 @@ import { useState } from 'react';
 
 
 
+
 const App = () => {
+    //Tamanho da Barra de acordo com o sistema OP
+    const statusBarHeight = Constants.statusBarHeight;
 
   //Criando Array com UseState
 
@@ -22,9 +25,12 @@ const App = () => {
     //setIngredients( [...ingredientes, 'Fermento']);
     setIngredients(prevIngredients => [...prevIngredients, 'Fermento'])
   }
+  const cleanIngredients = () => {
+    setIngredients( [''])
+  }
 
   return (
-    <SafeAreaView style={{ paddingTop: 27  }}>
+    <SafeAreaView style={{ marginTop: statusBarHeight + 8 }}>
       <Text style={styles.title}>Meu primeiro App</Text>
       <View>
         {ingredientes.map((item, index) => (
@@ -38,6 +44,7 @@ const App = () => {
         source={require('./assets/marmita_10.png')}
         style={{width:50, height:50}}
          />
+      <Button title="Limpar" onPress={cleanIngredients}/>
         </View>
     </SafeAreaView>
   );
