@@ -1,70 +1,44 @@
-import { TouchableOpacity, Alert, View, Button, TouchableHighlight, Text, SafeAreaView, StyleSheet, Pressable } from 'react-native';
+import { TouchableOpacity, Alert, View, Button, TouchableHighlight, Image, Text, SafeAreaView, StyleSheet, Pressable } from 'react-native';
 // import { SafeAreaView } from 'react-native-safe-area-context';
+import { Person } from "./types/Person";
 import Constants from 'expo-constants';
-import { PizzaItem } from './componentes/PizzaItem';
 import { useState } from 'react';
 
-const handleButton = () => {
-  Alert.alert("Você apertou!")
-}
-
-//Formas de Pressionamento
-
-const handlePressIn = () => {
-  Alert.alert('Apertou')
-};
-const handlePressOut = () => {
-  Alert.alert("Soltou o dedo!")
-}
-
-const handleLongPress = () => {
-  Alert.alert('Segurou o dedo')
-}
 
 
 const App = () => {
-  const [name, setName] = useState('Ninguem');
-  const [lastName, setLastName] = useState('Silva');
-  const [showOptions, setShowOptions] = useState(true);
-  
-  const alterarNome = () => {
-    setName('Olavo');
-    setLastName('Adriel');
-  }  
-  const alterarNome2 = () => {
-    setName('Kleber');
-    setLastName('Weber');
-    console.log("Teste")
+
+  //Criando Array com UseState
+
+  const [ingredientes, setIngredients] = useState<string[]>([
+    'ovo',
+    'farinha',
+    'açucar'
+  ])
+
+  const imagem = 'https://cdn1.iconfinder.com/data/icons/soleicons-fill-vol-1/64/reactjs_javascript_library_atom_atomic_react-512.png'
+
+  const hadleAddIngredients = () => {
+    //setIngredients( [...ingredientes, 'Fermento']);
+    setIngredients(prevIngredients => [...prevIngredients, 'Fermento'])
   }
 
-  const handleOptionButtons = () => {
-    setShowOptions(!showOptions)
-  }
   return (
     <SafeAreaView style={{ paddingTop: 27  }}>
       <Text style={styles.title}>Meu primeiro App</Text>
-
-
-      <Text style={{textAlign: 'center', margin:10, fontWeight: 'bold', fontSize:28}}> Meu nome é: {name} {lastName}</Text>
-        {showOptions &&
-      <View style={styles.box}>
-      <Button 
-      title="Mudar nome para Olavo"
-      onPress={alterarNome}
-      />
-      
-      <Button
-      title="Mudar nome para Adriel"
-      onPress={alterarNome2}
-      
-      /> 
+      <View>
+        {ingredientes.map((item, index) => (
+          <Text key={index} style={styles.item}>{item}</Text>
+        ))}
       </View>
-        }
-  
-      <Button 
-      title={ showOptions ?'Ocultar Opções' : 'Mostrar Opções' }
-      onPress={handleOptionButtons}></Button>
 
+      <Button title="Adicionar item" onPress={hadleAddIngredients}/>
+        <View style={{ alignItems: 'center' }}>
+        <Image 
+        source={require('./assets/marmita_10.png')}
+        style={{width:50, height:50}}
+         />
+        </View>
     </SafeAreaView>
   );
 }
@@ -79,7 +53,12 @@ const styles = StyleSheet.create({
   },
   subtitles: {
     fontSize: 17,
-    color: '#CCC',
+    color: '#FFF',
+    textAlign: 'center'
+  },
+  item:{
+    fontSize: 15,
+    color: '#000',
     textAlign: 'center'
   },
   button:{

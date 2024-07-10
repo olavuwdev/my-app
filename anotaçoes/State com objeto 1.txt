@@ -1,0 +1,63 @@
+import { TouchableOpacity, Alert, View, Button, TouchableHighlight, Text, SafeAreaView, StyleSheet, Pressable } from 'react-native';
+// import { SafeAreaView } from 'react-native-safe-area-context';
+import { Person } from "./types/Person";
+import Constants from 'expo-constants';
+import { useState } from 'react';
+
+
+
+const App = () => {
+    const [person, setPerson] = useState<Person>({
+      name: 'Olavo',
+      age:18,
+      height:173,
+      weight:69
+    })
+
+
+  return (
+    <SafeAreaView style={{ paddingTop: 27  }}>
+      <Text style={styles.item}>{person.name}</Text>
+      <Text style={styles.item}>{person.age} anos</Text>
+      <Text style={styles.item}>{person.height} cm</Text>
+      {person.weight && <Text style={styles.item}> {person.weight} kg</Text>}
+    </SafeAreaView>
+  );
+}
+
+export default App;
+
+const styles = StyleSheet.create({
+  title: {
+    fontSize: 24,
+    textAlign: 'center',
+    color: 'red'
+  },
+  subtitles: {
+    fontSize: 17,
+    color: '#FFF',
+    textAlign: 'center'
+  },
+  item:{
+    fontSize: 15,
+    color: '#000',
+    textAlign: 'center'
+  },
+  button:{
+    backgroundColor: 'gray',
+    margin:10
+    
+  },
+  buttonText:{
+    textAlign: 'center',
+    fontSize:19,
+    color: 'green'
+  },
+  box:{
+    borderColor: '#000000',
+    borderStyle: 'dotted',
+    borderWidth: 1.5,
+    margin:10,
+    padding:10
+  }
+});

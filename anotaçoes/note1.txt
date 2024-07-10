@@ -1,0 +1,108 @@
+CODIGO APP AULA 15 
+
+import { TouchableOpacity, Alert, View, Button, TouchableHighlight, Text, SafeAreaView, StyleSheet, Pressable } from 'react-native';
+// import { SafeAreaView } from 'react-native-safe-area-context';
+import Constants from 'expo-constants';
+import { PizzaItem } from './componentes/PizzaItem';
+import { CompTest } from './componentes/CompTeste';
+import { useState } from 'react';
+
+const handleButton = () => {
+  Alert.alert("Você apertou!")
+}
+
+//Formas de Pressionamento
+
+const handlePressIn = () => {
+  Alert.alert('Apertou')
+};
+const handlePressOut = () => {
+  Alert.alert("Soltou o dedo!")
+}
+
+const handleLongPress = () => {
+  Alert.alert('Segurou o dedo')
+}
+
+
+const App = () => {
+  const [name, setName] = useState('Ninguem');
+  const [lastName, setLastName] = useState('Silva');
+  const [showOptions, setShowOptions] = useState(true);
+  
+  const alterarNome = () => {
+    setName('Olavo');
+    setLastName('Adriel');
+  }  
+  const alterarNome2 = () => {
+    setName('Kleber');
+    setLastName('Weber');
+    console.log("Teste")
+  }
+
+  const handleOptionButtons = () => {
+    setShowOptions(!showOptions)
+  }
+  return (
+    <SafeAreaView style={{ paddingTop: 27  }}>
+      <Text style={styles.title}>Meu primeiro App</Text>
+
+      <Text style={{
+        textAlign: 'center', 
+      margin:10,
+         fontWeight: 'bold', 
+         fontSize:28}}> Meu nome é: {name} {lastName}</Text>
+        {showOptions &&
+      <View style={styles.box}>
+      <Button 
+      title="Mudar nome para Olavo"
+      onPress={alterarNome}
+      />
+      
+      <Button
+      title="Mudar nome para Adriel"
+      onPress={alterarNome2}
+      
+      /> 
+      </View>
+        }
+  
+      <Button 
+      title={ showOptions ?'Ocultar Opções' : 'Mostrar Opções' }
+      onPress={handleOptionButtons}></Button>
+
+    </SafeAreaView>
+  );
+}
+
+export default App;
+
+const styles = StyleSheet.create({
+  title: {
+    fontSize: 24,
+    textAlign: 'center',
+    color: 'red'
+  },
+  subtitles: {
+    fontSize: 17,
+    color: '#CCC',
+    textAlign: 'center'
+  },
+  button:{
+    backgroundColor: 'gray',
+    margin:10
+    
+  },
+  buttonText:{
+    textAlign: 'center',
+    fontSize:19,
+    color: 'green'
+  },
+  box:{
+    borderColor: '#000000',
+    borderStyle: 'dotted',
+    borderWidth: 1.5,
+    margin:10,
+    padding:10
+  }
+});
