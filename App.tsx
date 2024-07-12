@@ -5,6 +5,7 @@ import Constants from 'expo-constants';
 import { Person } from "./types/Person";
 import  { WhatIsYourName} from './componentes/WhatIsYourName';
 import  { HereIsYourName} from './componentes/HereIsYourName';
+import { Styles} from './assets/style/styles'
  
 const App = () => {
     // Tamanho da Barra de acordo com o sistema OP
@@ -22,7 +23,7 @@ const App = () => {
 
     return (
         <SafeAreaView style={{ marginTop: statusBarHeight + 8 }}>
-            <Text style={styles.title}>Meu primeiro App</Text>
+            <Text style={Styles.title}>Meu primeiro App</Text>
 
             <View style={{ alignItems: 'center' }}>
             
@@ -48,36 +49,4 @@ const App = () => {
 
 export default App;
 
-const styles = StyleSheet.create({
-    title: {
-        fontSize: 24,
-        textAlign: 'center',
-        color: '#775252'
-    },
-    subtitles: {
-        fontSize: 17,
-        color: '#FFF',
-        textAlign: 'center'
-    },
-    item: {
-        fontSize: 15,
-        color: '#000',
-        textAlign: 'center'
-    },
-    button: {
-        backgroundColor: 'gray',
-        margin: 10
-    },
-    buttonText: {
-        textAlign: 'center',
-        fontSize: 19,
-        color: 'green'
-    },
-    box: {
-        borderColor: '#000000',
-        borderStyle: 'dotted',
-        borderWidth: 1.5,
-        margin: 10,
-        padding: 10
-    }
-});
+
