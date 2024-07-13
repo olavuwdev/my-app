@@ -5,45 +5,14 @@ import Constants from 'expo-constants';
 import { Person } from "./types/Person";
 import  { WhatIsYourName} from './componentes/WhatIsYourName';
 import  { HereIsYourName} from './componentes/HereIsYourName';
-import { Styles} from './assets/style/styles'
+import  { MyBotton } from './componentes/ButtonCheck/';
+import { Styles} from './assets/style/styles';
+import { ScreenLogin} from './componentes/AppAula1/';
  
 const App = () => {
-    // Tamanho da Barra de acordo com o sistema OP
-    const statusBarHeight = Constants.statusBarHeight;
-
-
-    const [nome, setName] = useState('Pablo')
-
-    const enviaNome = (newName:string) => {
-      setName(newName);
-    }
-    const handleClear = () =>{
-        setName('')
-    }
 
     return (
-        <SafeAreaView style={{ marginTop: statusBarHeight + 8 }}>
-            <Text style={Styles.title}>Meu primeiro App</Text>
-
-            <View style={{ alignItems: 'center' }}>
-            
-
-                <View>
-                  { nome == '' &&
-                    <>
-                        <WhatIsYourName onSend={enviaNome} />
-                    </>
-              }
-              {
-                nome != '' &&
-                <>
-                        <HereIsYourName name={nome} clearFunction={handleClear} />
-                </>
-              }
-              
-            </View>
-            </View>
-        </SafeAreaView>
+       <ScreenLogin/>
     );
 }
 

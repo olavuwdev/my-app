@@ -1,7 +1,7 @@
 
 import {  StyleSheet} from 'react-native';
 
-export const Styles = StyleSheet.create({
+export const Styles ={
     title: {
         fontSize: 24,
         textAlign: 'center',
@@ -34,4 +34,4 @@ export const Styles = StyleSheet.create({
         padding: 10,
         backgroundColor:'green'
     }
-});
+};
