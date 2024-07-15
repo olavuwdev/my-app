@@ -10,7 +10,7 @@ type Props ={
 export const Ball = ({posY}: Props) =>{
   return(
     <View style={[styles.container,  {bottom: posY}]}>
-      <Text style={{fontSize:26, textAlign:'center'}}>🏀</Text>
+      <Text style={{fontSize:32, textAlign:'center'}}>🏀</Text>
     </View>
   )
 }
