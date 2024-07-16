@@ -9,11 +9,11 @@ import  { MyBotton } from './componentes/ButtonCheck/';
 import { Styles} from './assets/style/styles';
 import { ScreenLogin} from './componentes/AppAula1/';
 import { ControlBoll } from './componentes/ControlBoll/';
- 
+import { FilmesEmCartaz } from './componentes/FIlmesEmCartaz'; 
 const App = () => {
 
-    return (
-       <ControlBoll/>
+    return(
+       <FilmesEmCartaz/>
     );
 }
 
