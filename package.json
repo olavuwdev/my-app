@@ -14,7 +14,8 @@
     "react": "18.2.0",
     "react-native": "0.74.3",
     "yarn": "^1.22.22",
-    "yet": "^0.1.0"
+    "yet": "^0.1.0",
+    "expo-font": "~12.0.9"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
