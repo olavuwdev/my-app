@@ -36,7 +36,6 @@ export const styles = StyleSheet.create({
         fontSize:18,
         textAlign:'center',
         margin:10,
-        marginBottom:25
         
     },
     movieList:{

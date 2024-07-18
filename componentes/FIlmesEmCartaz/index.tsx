@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Text, View, Image, SafeAreaView, FlatList, ActivityIndicator, TouchableOpacity} from 'react-native';
+import { Button, Text, View, Image, SafeAreaView, FlatList, ActivityIndicator,  Vibration ,TouchableOpacity} from 'react-native';
 import Constants from 'expo-constants';
-import { styles } from './style';
+import { styles as S } from './style';
 
 
 
@@ -29,31 +29,34 @@ export const FilmesEmCartaz = () =>{
   
     
     return(   
-        <SafeAreaView style={[styles.container, {marginTop: statusBarHeight + 8}]}>
-            <View style={styles.typeListMoviesButtonView} >
-            <TouchableOpacity style={styles.typeListMoviesButton} onPress={() => setTypeListMovies('top_rated')}>
+        <SafeAreaView style={[S.container, {marginTop: statusBarHeight + 8}]}>
+            <View style={S.typeListMoviesButtonView} >
+            <TouchableOpacity style={S.typeListMoviesButton} onPress={() => [setTypeListMovies('top_rated'),  Vibration.vibrate(60)]}>
                 <Text>Melhor avaliado </Text>
             
             </TouchableOpacity> 
-            <TouchableOpacity style={styles.typeListMoviesButton} onPress={() => setTypeListMovies('popular')}>
+            <TouchableOpacity style={S.typeListMoviesButton} onPress={() => [setTypeListMovies('popular'), Vibration.vibrate(60)]}>
                 <Text>Populares</Text>
             
             </TouchableOpacity> 
             </View>
            
         { loading &&
-            <View style={styles.loadingArea}>
+            <View style={S.loadingArea}>
                 <ActivityIndicator size="large" color='#FFF'/>
-                <Text style={styles.loadingText}>Carregando</Text>
+                <Text style={S.loadingText}>Carregando</Text>
             </View>
         }
         { !loading &&
         <>
-            <Text style={styles.totalMoviesText}>FIlmes: {movies.length}</Text>
-            <FlatList style={styles.movieList} data={movies} renderItem={({item})=>(
-                <View style={styles.movieItem}>
-                    <Text style={styles.movieTitle}>{item.title}</Text>
-                    <Image resizeMode="contain" source={{uri: "https://image.tmdb.org/t/p/w500/" + item.poster_path}} style={styles.movieImage}/>
+            <Text style={S.totalMoviesText}>FIlmes: {movies.length}</Text>
+            <Text style={[S.totalMoviesText, {fontWeight:'bold',  fontSize:25, marginTop:2}]}>
+  {typeListMovies === 'top_rated' ? 'Melhores avaliados' : 'Populares'}
+</Text>
+            <FlatList style={S.movieList} data={movies} renderItem={({item})=>(
+                <View style={S.movieItem}>
+                    <Text style={S.movieTitle}>{item.title}</Text>
+                    <Image resizeMode="contain" source={{uri: "https://image.tmdb.org/t/p/w500/" + item.poster_path}} style={S.movieImage}/>
                 </View>
             )}
         keyExtractor={item =>  item.id.toString()}
