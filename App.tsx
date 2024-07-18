@@ -10,10 +10,11 @@ import { Styles} from './assets/style/styles';
 import { ScreenLogin} from './componentes/AppAula1/';
 import { ControlBoll } from './componentes/ControlBoll/';
 import { FilmesEmCartaz } from './componentes/FIlmesEmCartaz'; 
+import { ScreenLogin as S} from './componentes/LoginScreen';
 const App = () => {
 
     return(
-       <FilmesEmCartaz/>
+       <S/>
     );
 }
 
