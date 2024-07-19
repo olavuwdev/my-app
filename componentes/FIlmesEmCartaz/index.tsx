@@ -5,7 +5,7 @@ import { styles as S } from './style';
 
 
 
-export const FilmesEmCartaz = () =>{
+export const FilmesEmCartaz = ({route }) =>{
 
     const statusBarHeight = Constants.statusBarHeight;
     const [loading, setLoading] = useState(true);

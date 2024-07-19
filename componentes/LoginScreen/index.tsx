@@ -4,7 +4,7 @@ import Constants from 'expo-constants';
 import {style as S} from './style'
 
 
-export const ScreenLogin = () =>{
+export const ScreenLogin = ({ navigation}) =>{
 
     //Função para gerar um cupom aleatorio
     const generateCupom = () => {
@@ -39,7 +39,9 @@ export const ScreenLogin = () =>{
 
         if(json.status == 'ok'){
             setStatus('Acesso LIBERADO');
+            setCupom(generateCupom())
             setcupomShow(true)
+            navigation.navigate('Filmes'); // Navega para a tela Filmes
         }else{
             setStatus('Acesso NEGADO');
             setcupomShow(false)
@@ -59,18 +61,17 @@ export const ScreenLogin = () =>{
             <TextInput 
             style={S.input} 
             placeholder="Digite sua senha"
-            value="password"
             onChangeText={(t)=>setpassword(t)}
             secureTextEntry={true}
             ></TextInput>
 
-            <Button title="Verificar" onPress={handleVerifyLogin}/>
+            <Button title="Verificar" onPress={() => navigation.navigate('Details')}/>
 
             <Text style={S.status}>{status}</Text>
             {cupomShow &&
                 <View style={S.cupomArea}>
                 <Text style={S.cupomTitle}>Cupom:</Text>
-                <Text style={S.cupom}>{generateCupom()}</Text>
+                <Text style={S.cupom}>{cupom}</Text>
                 </View>
             }
             
