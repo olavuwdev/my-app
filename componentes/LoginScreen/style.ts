@@ -25,9 +25,10 @@ export const style = StyleSheet.create({
     },
     status:{
         margin:50,
-        color:'white',
+        color:'red',
         fontSize:18,
-        textAlign:'center'
+        textAlign:'center',
+        fontWeight:'bold'
     },
     cupomArea:{
         backgroundColor:'white',
@@ -36,7 +37,7 @@ export const style = StyleSheet.create({
     },
     cupomTitle:{
         fontSize:20,
-        textAlign:'center'
+        textAlign:'center',
     },
     cupom:{
         fontWeight:'bold',
