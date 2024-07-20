@@ -5,7 +5,7 @@ import { styles as S } from './style';
 
 
 
-export const FilmesEmCartaz = ({route }) =>{
+export function FilmesEmCartaz ({}){
 
     const statusBarHeight = Constants.statusBarHeight;
     const [loading, setLoading] = useState(true);
@@ -29,7 +29,7 @@ export const FilmesEmCartaz = ({route }) =>{
   
     
     return(   
-        <SafeAreaView style={[S.container, {marginTop: statusBarHeight + 8}]}>
+        <SafeAreaView style={[S.container]}>
             <View style={S.typeListMoviesButtonView} >
             <TouchableOpacity style={S.typeListMoviesButton} onPress={() => [setTypeListMovies('top_rated'),  Vibration.vibrate(60)]}>
                 <Text>Melhor avaliado </Text>

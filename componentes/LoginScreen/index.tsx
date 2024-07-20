@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {SafeAreaView, View, Text, TextInput, Button} from 'react-native'
+import {SafeAreaView, View, Text, TextInput, Button, Vibration} from 'react-native'
 import Constants from 'expo-constants';
 import {style as S} from './style'
 
@@ -49,7 +49,7 @@ export const ScreenLogin = ({ navigation}) =>{
         }
 }
     return(
-        <SafeAreaView style={[S.content,  {marginTop: Constants.statusBarHeight + 8}]}>
+        <SafeAreaView style={[S.content]}>
             <Text style={S.header}>Tela de Login</Text>
 
             <TextInput 
@@ -65,7 +65,8 @@ export const ScreenLogin = ({ navigation}) =>{
             secureTextEntry={true}
             ></TextInput>
 
-            <Button title="Verificar" onPress={() => navigation.navigate('Details')}/>
+<Button title="Verificar" onPress={() => { handleVerifyLogin(); Vibration.vibrate(80); }} />
+
 
             <Text style={S.status}>{status}</Text>
             {cupomShow &&
