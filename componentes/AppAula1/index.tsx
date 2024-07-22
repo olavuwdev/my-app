@@ -1,4 +1,4 @@
-import {Text, ScrollView, View, Image, TextInput, TouchableOpacity, Alert} from 'react-native'
+import {Text, ScrollView, View, Image, TextInput, TouchableOpacity, Alert, Vibration} from 'react-native'
 import {styles} from './style'
 import React, {useState} from 'react';
 import { useNavigation } from '@react-navigation/native';
@@ -13,7 +13,7 @@ export const ScreenLogin = () =>{
     const navegation = useNavigation();
 
     function checkToNavigate(){
-        if((name, passwordField) != ''){
+        if(name !== '' && passwordField !== ''){
             return handleLoginButton
         }
     } 
@@ -79,7 +79,7 @@ export const ScreenLogin = () =>{
                     </TouchableOpacity>
                 </View>
 
-                <TouchableOpacity onPress={handlePress} style={styles.button}>
+                <TouchableOpacity onPress={() =>[handlePress(),  Vibration.vibrate(50)]} style={styles.button}>
                     <Text style={styles.buttonText}>Entrar</Text>
                 </TouchableOpacity>
 

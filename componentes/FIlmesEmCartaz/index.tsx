@@ -4,6 +4,7 @@ import Constants from 'expo-constants';
 import { styles as S } from './style';
 import { useRoute } from '@react-navigation/native';
 import { ScreenLogin } from './../LoginScreen/index';
+import { Grid, Plane } from 'react-native-animated-spinkit'
 
 
 
@@ -32,6 +33,7 @@ export function FilmesEmCartaz ({}){
         requestMovies();
     }, [typeListMovies])
 
+
   
     
     return(   
@@ -41,7 +43,8 @@ export function FilmesEmCartaz ({}){
             <TouchableOpacity style={S.typeListMoviesButton} onPress={() => [setTypeListMovies('top_rated'),  Vibration.vibrate(60)]}>
                 <Text>Melhor avaliado </Text>
             
-            </TouchableOpacity> 
+            </TouchableOpacity>
+
             <TouchableOpacity style={S.typeListMoviesButton} onPress={() => [setTypeListMovies('popular'), Vibration.vibrate(60)]}>
                 <Text>Populares</Text>
             </TouchableOpacity> 
@@ -49,12 +52,13 @@ export function FilmesEmCartaz ({}){
            
         { loading &&
             <View style={S.loadingArea}>
-                <ActivityIndicator size="large" color='#FFF'/>
+                 <Grid size={48} color="#FFF" />
                 <Text style={S.loadingText}>Carregando</Text>
             </View>
         }
         { !loading &&
         <>
+           
             <Text style={S.totalMoviesText}>Filmes: {movies.length}</Text>
             <Text style={[S.totalMoviesText, {fontWeight:'bold',  fontSize:25, marginTop:2}]}>
   {typeListMovies === 'top_rated' ? 'Melhores avaliados' : 'Populares'}
