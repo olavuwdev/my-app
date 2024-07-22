@@ -4,6 +4,7 @@ import Constants from 'expo-constants';
 import {style as S} from './style'
 
 
+
 export const ScreenLogin = ({ navigation}) =>{
 
     //Função para gerar um cupom aleatorio

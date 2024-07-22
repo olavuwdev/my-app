@@ -15,7 +15,7 @@ import { ControlBoll } from './componentes/ControlBoll/';
 import { FilmesEmCartaz } from './componentes/FIlmesEmCartaz'; 
 import React, { useState } from 'react';
 import { ScreenLogin as Login} from './componentes/LoginScreen';
-
+import {ScreenMain} from './navigators/MainSack';
 
 const Stack = createStackNavigator();
 
@@ -23,10 +23,14 @@ const App = () => {
 
     return(
         <NavigationContainer>
-        <Stack.Navigator initialRouteName="Login">
-          <Stack.Screen name="Login" component={Login} />
+      {/* 
+       <Stack.Navigator initialRouteName="Login">
+          <Stack.Screen name="Login"  component={ScreenLogin} options={{ headerShown: false }} />
           <Stack.Screen name="Filmes" component={FilmesEmCartaz} />
         </Stack.Navigator>
+        */}
+        <ScreenMain/>
+        
       </NavigationContainer>
     );
 }

@@ -9,10 +9,18 @@ export const styles = StyleSheet.create({
         flex:1
         ,backgroundColor:'#333'
     },
+    textWelcome:{
+        marginTop:10,
+        textAlign:'center',
+        fontSize:18,
+        color:'white',
+        fontWeight:'bold'
+    },
     typeListMoviesButtonView:{
-        marginTop:20,
+        marginTop:10,
         flexDirection:'row',
-        justifyContent:'center'
+        justifyContent:'center',
+        gap:8
     },
     typeListMoviesButton:{
         height:45,

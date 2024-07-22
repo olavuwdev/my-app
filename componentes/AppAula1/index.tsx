@@ -1,23 +1,26 @@
 import {Text, ScrollView, View, Image, TextInput, TouchableOpacity, Alert} from 'react-native'
 import {styles} from './style'
 import React, {useState} from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 
 
 export const ScreenLogin = () =>{
 
-    const [emailField, setEmailField] = useState<string>('');
+    const [name, setname] = useState<string>('');
     const [passwordField, setpasswordField] = useState<string>('');
+    //Constante com classe para o uso da navegação
+    const navegation = useNavigation();
 
     function checkToNavigate(){
-        if((emailField, passwordField) != ''){
+        if((name, passwordField) != ''){
             return handleLoginButton
         }
     } 
     const handlePress = () => {
         const navigate = checkToNavigate();
         if (navigate) {
-          navigate(); // Chama a função handleLoginButton se a condição for atendida
+            navegation.push('filmes', {name})
         } else {
           Alert.alert("Erro", "Por favor, preencha todos os campos.");
         }
@@ -30,7 +33,7 @@ export const ScreenLogin = () =>{
 
     }
     const handleLoginButton = () =>{
-        alert(emailField)
+        alert(name)
         alert(passwordField)
     }
 
@@ -43,15 +46,15 @@ export const ScreenLogin = () =>{
                 <Text style={styles.h2}> Digite seus dados abaixo</Text>
             
                 <View style={styles.areaTextInput}>
-                    <Text style={styles.inputLabel}> Email</Text>
+                    <Text style={styles.inputLabel}> Usuario</Text>
                     <TextInput
                     style={styles.inputField}
-                    placeholder='Digite seu email!'
+                    placeholder='Digite seu usuario!'
                     placeholderTextColor="#999"
-                    value={emailField}
-                    onChangeText={t => setEmailField(t)}
+                    value={name}
+                    onChangeText={t => setname(t)}
                     autoCapitalize='none'
-                    keyboardType='email-address'
+                    
                     
                     />
 

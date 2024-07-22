@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Button, Text, View, Image, SafeAreaView, FlatList, ActivityIndicator,  Vibration ,TouchableOpacity} from 'react-native';
 import Constants from 'expo-constants';
 import { styles as S } from './style';
+import { useRoute } from '@react-navigation/native';
+import { ScreenLogin } from './../LoginScreen/index';
 
 
 
@@ -11,6 +13,10 @@ export function FilmesEmCartaz ({}){
     const [loading, setLoading] = useState(true);
     const  [movies, setMovies] = useState([]);
     const [typeListMovies, setTypeListMovies ] = useState('popular');
+    //Rota para pegar nome informado no ScreenLogin
+    const route = useRoute()
+
+    const name = route.params?.name ?? 'Visitante'
 
     useEffect(()=>{
         const requestMovies = async () => {
@@ -30,6 +36,7 @@ export function FilmesEmCartaz ({}){
     
     return(   
         <SafeAreaView style={[S.container]}>
+            <Text  style={S.textWelcome}>Olá, {name}, é um prazer te ver aqui</Text>
             <View style={S.typeListMoviesButtonView} >
             <TouchableOpacity style={S.typeListMoviesButton} onPress={() => [setTypeListMovies('top_rated'),  Vibration.vibrate(60)]}>
                 <Text>Melhor avaliado </Text>
@@ -37,7 +44,6 @@ export function FilmesEmCartaz ({}){
             </TouchableOpacity> 
             <TouchableOpacity style={S.typeListMoviesButton} onPress={() => [setTypeListMovies('popular'), Vibration.vibrate(60)]}>
                 <Text>Populares</Text>
-            
             </TouchableOpacity> 
             </View>
            
@@ -49,7 +55,7 @@ export function FilmesEmCartaz ({}){
         }
         { !loading &&
         <>
-            <Text style={S.totalMoviesText}>FIlmes: {movies.length}</Text>
+            <Text style={S.totalMoviesText}>Filmes: {movies.length}</Text>
             <Text style={[S.totalMoviesText, {fontWeight:'bold',  fontSize:25, marginTop:2}]}>
   {typeListMovies === 'top_rated' ? 'Melhores avaliados' : 'Populares'}
 </Text>
