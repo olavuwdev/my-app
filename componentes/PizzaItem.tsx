@@ -8,13 +8,13 @@ type Propos = {
     price:number;
     originalPrice?:number;
     items?: string[];
-    onPress: () => void;
+
   }
 
 
-export const PizzaItem = ({name, price, originalPrice, items, onPress}: Propos) =>{
+export const PizzaItem = ({name, price, originalPrice, items}: Propos) =>{
     return (
-        <Pressable onPress={onPress}>
+
         <View style={styles.container}>
             <Text style={[styles.name, styles.negrito]}>{name}</Text>
             <Text style={styles.price}>{`R$ ${price.toFixed(2)}`}</Text>
@@ -23,7 +23,7 @@ export const PizzaItem = ({name, price, originalPrice, items, onPress}: Propos) 
             }
             <Text>{items?.join(', ')}</Text>
         </View>
-        </Pressable>
+
     );
 }
 

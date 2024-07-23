@@ -9,6 +9,7 @@ export const ScreenLogin = () =>{
 
     const [name, setname] = useState<string>('');
     const [passwordField, setpasswordField] = useState<string>('');
+    const [color, setColor] = useState<string>('');
     //Constante com classe para o uso da navegação
     const navegation = useNavigation();
 
@@ -20,7 +21,7 @@ export const ScreenLogin = () =>{
     const handlePress = () => {
         const navigate = checkToNavigate();
         if (navigate) {
-            navegation.push('filmes', {name})
+            navegation.navigate('FILMES', {name,color})
         } else {
           Alert.alert("Erro", "Por favor, preencha todos os campos.");
         }
@@ -69,6 +70,20 @@ export const ScreenLogin = () =>{
                     onChangeText={t=> setpasswordField(t)}
                     placeholderTextColor="#999"
 
+                    />
+
+                </View>
+                <View style={styles.areaTextInput}>
+                    <Text style={styles.inputLabel}> Cor</Text>
+                    <TextInput
+                    style={styles.inputField}
+                    placeholder='Digite uma cor'
+                    placeholderTextColor="#999"
+                    value={color}
+                    onChangeText={t => setColor(t)}
+                    autoCapitalize='none'
+                    
+                    
                     />
 
                 </View>
