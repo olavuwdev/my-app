@@ -26,14 +26,14 @@ const App = () => {
     return(
         
         <NavigationContainer>
- 
+ {          /*
        <Stack.Navigator initialRouteName="Exercicio1">
-{          /*<Stack.Screen name="Login"  component={ScreenLogin} options={{ headerShown: false }} />
-          <Stack.Screen name="Filmes" component={FilmesEmCartaz} /> */}
+<Stack.Screen name="Login"  component={ScreenLogin} options={{ headerShown: false }} />
+          <Stack.Screen name="Filmes" component={FilmesEmCartaz} /> 
           <Stack.Screen name="Exercicio1" component={Exer1} />
         </Stack.Navigator>
-
-        {/*<ScreenMain/>*/}
+        */}
+        <ScreenMain/>
         
       </NavigationContainer>
     );

@@ -69,7 +69,7 @@ export const ScreenLogin = ({ navigation}) =>{
 <Button title="Verificar" onPress={() => { handleVerifyLogin(); Vibration.vibrate(80); }} />
 
 
-            <Text style={S.status}>{status}</Text>
+            <Text style={S.status}>{status}</Text>gi
             {cupomShow &&
                 <View style={S.cupomArea}>
                 <Text style={S.cupomTitle}>Cupom:</Text>
