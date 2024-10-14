@@ -3,9 +3,14 @@ import {SafeAreaView, View, Text, TextInput, Button, Vibration} from 'react-nati
 import Constants from 'expo-constants';
 import {style as S} from './style'
 
+import { useNavigation } from '@react-navigation/native';
 
 
-export const ScreenLogin = ({ navigation}) =>{
+
+
+export const ScreenLogin = () =>{
+
+    const navigation = useNavigation()
 
     //Função para gerar um cupom aleatorio
     const generateCupom = () => {
@@ -42,7 +47,7 @@ export const ScreenLogin = ({ navigation}) =>{
             setStatus('Acesso LIBERADO');
             setCupom(generateCupom())
             setcupomShow(true)
-            navigation.navigate('Filmes'); // Navega para a tela Filmes
+            navigation.navigate('HomeScreen'); // Navega para a tela Filmes
         }else{
             setStatus('Acesso NEGADO');
             setcupomShow(false)

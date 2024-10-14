@@ -21,7 +21,7 @@ export const ScreenLogin = () =>{
     const handlePress = () => {
         const navigate = checkToNavigate();
         if (navigate) {
-            navegation.navigate('FILMES', {name,color})
+            navegation.navigate('HomeScreen')
         } else {
           Alert.alert("Erro", "Por favor, preencha todos os campos.");
         }
